@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import styled from "styled-components/macro";
 import logo from "../logo.svg";
 import UnstyledButton from "./UnstyledButton";
+import VisuallyHidden from "./VisuallyHidden";
 import MobileMenu from "./MobileMenu";
 import CartPopup from "./CartPopup";
 import { USER } from "../data";
@@ -20,6 +21,7 @@ const Header = () => {
         <Side>
           <MobileMenuButton onClick={() => setShowMobileMenu(true)}>
             <IconMenu />
+            <VisuallyHidden>Open menu</VisuallyHidden>
           </MobileMenuButton>
           <LogoWrapper href="/">
             <Logo src={logo} alt="logo" />
@@ -35,6 +37,7 @@ const Header = () => {
 
         <NavWrapper>
           <CartButton onClick={() => setshowCartPopup(true)}>
+            <VisuallyHidden>Open Cart</VisuallyHidden>
             <IconCart />
             {cartContext.cart.items.length > 0 && (
               <CartCount>{cartContext.cart.totalQuantity}</CartCount>

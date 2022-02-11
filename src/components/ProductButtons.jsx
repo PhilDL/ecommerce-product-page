@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 import { useState } from "react";
 import { IconMinus, IconPlus } from "./Icons";
 import UnstyledButton from "./UnstyledButton";
+import VisuallyHidden from "./VisuallyHidden";
 import PrimaryButton from "./PrimaryButton";
 import { QUERIES } from "../constants";
 
@@ -16,14 +17,22 @@ const ProductButtons = ({ productId, onAddToCart }) => {
       <QuantityFieldSet>
         <ChangeQtyButton onClick={(e) => setQuantity((state) => +state - 1)}>
           <IconMinus width={12} />
+          <VisuallyHidden>Decrease quantity</VisuallyHidden>
         </ChangeQtyButton>
-        <QuantityInput
-          type="number"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-        />
+        <VisuallyHidden>Previous Image</VisuallyHidden>
+        <Quantity>
+          <VisuallyHidden>Quantity</VisuallyHidden>
+          <QuantityInput
+            type="number"
+            value={quantity}
+            name="quantity"
+            onChange={(e) => setQuantity(e.target.value)}
+          />
+        </Quantity>
+
         <ChangeQtyButton onClick={(e) => setQuantity((state) => +state + 1)}>
           <IconPlus width={12} />
+          <VisuallyHidden>Increase quantity</VisuallyHidden>
         </ChangeQtyButton>
       </QuantityFieldSet>
       <AddToCartButton onClick={onAddToCartHandler}>
@@ -64,7 +73,7 @@ const ChangeQtyButton = styled(UnstyledButton)`
     color: var(--color-black);
   }
 `;
-
+const Quantity = styled.label``;
 const QuantityInput = styled.input`
   border: none;
   background: transparent;

@@ -3,6 +3,7 @@ import UnstyledButton from "./UnstyledButton";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 import { IconPrevious, IconNext } from "./Icons";
 import { QUERIES } from "../constants";
+import VisuallyHidden from "./VisuallyHidden";
 
 const CarouselImageZoomIn = ({
   isOpen,
@@ -28,9 +29,11 @@ const CarouselImageZoomIn = ({
           />
           <PrevButton onClick={onPrevImage}>
             <IconPrevious width={12} />
+            <VisuallyHidden>Previous Image</VisuallyHidden>
           </PrevButton>
           <NextButton onClick={onNextImage}>
             <IconNext width={12} />
+            <VisuallyHidden>Next Image</VisuallyHidden>
           </NextButton>
         </CarouselMainImage>
 

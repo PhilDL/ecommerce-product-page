@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components/macro";
 import UnstyledButton from "./UnstyledButton";
+import VisuallyHidden from "./VisuallyHidden";
 import CarouselImageZoomIn from "./CarouselImageZoomIn";
 import { IconNext, IconPrevious } from "./Icons";
 import { QUERIES } from "../constants";
@@ -32,9 +33,11 @@ const ProductImagesCarousel = ({ images, productName }) => {
         />
         <PrevButton onClick={onPrevImageHandler}>
           <IconPrevious width={12} />
+          <VisuallyHidden>Previous Image</VisuallyHidden>
         </PrevButton>
         <NextButton onClick={onNextImageHandler}>
           <IconNext width={12} />
+          <VisuallyHidden>Next Image</VisuallyHidden>
         </NextButton>
       </CarouselMainImage>
 
