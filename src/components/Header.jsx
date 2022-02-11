@@ -4,10 +4,10 @@ import logo from "../logo.svg";
 import UnstyledButton from "./UnstyledButton";
 import MobileMenu from "./MobileMenu";
 import CartPopup from "./CartPopup";
-import Icon from "./Icon";
 import { USER } from "../data";
 import CartContext from "../store/cart-context";
 import { QUERIES } from "../constants";
+import { IconCart, IconMenu } from "./Icons";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -19,9 +19,9 @@ const Header = () => {
       <HeaderWrapper>
         <Side>
           <MobileMenuButton onClick={() => setShowMobileMenu(true)}>
-            <Icon name="menu" alt="Open Menu" width="auto" />
+            <IconMenu />
           </MobileMenuButton>
-          <LogoWrapper>
+          <LogoWrapper href="/">
             <Logo src={logo} alt="logo" />
           </LogoWrapper>
           <Navigation>
@@ -35,14 +35,14 @@ const Header = () => {
 
         <NavWrapper>
           <CartButton onClick={() => setshowCartPopup(true)}>
-            <Icon name="cart" size="auto" alt="Show Cart" />
+            <IconCart />
             {cartContext.cart.items.length > 0 && (
               <CartCount>{cartContext.cart.totalQuantity}</CartCount>
             )}
           </CartButton>
-          <NavLink to="/contact">
+          <a href="/contact">
             <Avatar src={USER.avatar} alt="Show Cart" />
-          </NavLink>
+          </a>
         </NavWrapper>
         <MobileMenu
           isOpen={showMobileMenu}
@@ -59,19 +59,24 @@ const Header = () => {
 };
 
 const HeaderWrapper = styled.header`
-  padding: 19px 24px;
+  padding-left: 24px;
+  padding-right: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   @media ${QUERIES.tabletAndUp} {
     margin: auto;
     max-width: 1110px;
-    padding: 24px 48px;
+    padding-left: 48px;
+    padding-right: 48px;
   }
 `;
 const Side = styled.div`
   display: flex;
   gap: 16px;
+  @media ${QUERIES.tabletAndUp} {
+    gap: 48px;
+  }
 `;
 
 const Separator = styled.div`
@@ -86,12 +91,18 @@ const Separator = styled.div`
 `;
 
 const MobileMenuButton = styled(UnstyledButton)`
+  color: var(--color-gray-700);
   @media ${QUERIES.tabletAndUp} {
     display: none;
   }
 `;
 
-const LogoWrapper = styled.a``;
+const LogoWrapper = styled.a`
+  padding: 19px 0;
+  @media ${QUERIES.tabletAndUp} {
+    padding: 24px 0;
+  }
+`;
 const Logo = styled.img`
   width: 100%;
 `;
@@ -104,12 +115,20 @@ const Navigation = styled.nav`
   display: none;
   @media ${QUERIES.tabletAndUp} {
     display: flex;
-    gap: 16px;
+    gap: 32px;
   }
 `;
 const NavLink = styled.a`
   text-decoration: none;
   color: var(--color-gray-700);
+  padding: 19px 0;
+  @media ${QUERIES.tabletAndUp} {
+    padding: 24px 0;
+    &:hover {
+      border-bottom: 4px solid var(--color-primary);
+      margin-bottom: -3px;
+    }
+  }
 `;
 
 const Avatar = styled.img`
@@ -123,6 +142,10 @@ const CartButton = styled(UnstyledButton)`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-gray-700);
+  &:hover {
+    color: var(--color-gray-900);
+  }
 `;
 
 const CartCount = styled.span`

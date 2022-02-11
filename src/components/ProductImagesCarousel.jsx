@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components/macro";
 import UnstyledButton from "./UnstyledButton";
 import CarouselImageZoomIn from "./CarouselImageZoomIn";
-import Icon from "./Icon";
+import { IconNext, IconPrevious } from "./Icons";
 import { QUERIES } from "../constants";
 
 const ProductImagesCarousel = ({ images, productName }) => {
@@ -31,10 +31,10 @@ const ProductImagesCarousel = ({ images, productName }) => {
           onClick={() => setCarouselImageZoomIn(true)}
         />
         <PrevButton onClick={onPrevImageHandler}>
-          <Icon name="previous" alt="Previous Img" width={12} />
+          <IconPrevious width={12} />
         </PrevButton>
         <NextButton onClick={onNextImageHandler}>
-          <Icon name="next" alt="Next Img" width={12} />
+          <IconNext width={12} />
         </NextButton>
       </CarouselMainImage>
 
@@ -107,6 +107,10 @@ const CarouselImageThumbnail = styled.img`
   border: ${({ selected }) =>
     selected ? "2px solid var(--color-primary)" : "none"};
   opacity: ${({ selected }) => (selected ? "0.4" : "1")};
+  &:hover {
+    cursor: pointer;
+    opacity: 0.4;
+  }
 `;
 
 const ActionButton = styled(UnstyledButton)`
@@ -118,6 +122,9 @@ const ActionButton = styled(UnstyledButton)`
   height: 40px;
   display: flex;
   align-items: center;
+  &:hover {
+    color: var(--color-primary);
+  }
 `;
 
 const PrevButton = styled(ActionButton)`

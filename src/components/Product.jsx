@@ -11,7 +11,6 @@ import { QUERIES } from "../constants";
 const Product = ({ product }) => {
   const cartContext = useContext(CartContext);
   const onAddToCartHandler = ({ productId, quantity }) => {
-    console.log(`Add to cart productId ${productId} quantity ${quantity}`);
     cartContext.dispatchCart({
       type: "ADD_ITEM",
       payload: { ...PRODUCT, quantity: quantity },

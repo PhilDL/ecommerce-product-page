@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import styled from "styled-components/macro";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import Icon from "./Icon";
+import { IconClose } from "./Icons";
 
 import UnstyledButton from "./UnstyledButton";
 import VisuallyHidden from "./VisuallyHidden";
@@ -16,7 +16,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
       <Content aria-label="Navigation Menu">
         <ModalHeader>
           <CloseButton onClick={onDismiss}>
-            <Icon name="close" alt="Close Menu" width="auto" />
+            <IconClose />
             <VisuallyHidden>Close Modal</VisuallyHidden>
           </CloseButton>
         </ModalHeader>
@@ -54,6 +54,16 @@ const Content = styled(DialogContent)`
   flex-direction: column;
   justify-content: flex-start;
   gap: 48px;
+  animation: slide 0.2s ease-in;
+
+  @keyframes slide {
+    0% {
+      width: 0px;
+    }
+    100% {
+      width: 300px;
+    }
+  }
 `;
 
 const ModalHeader = styled.footer`
@@ -69,6 +79,7 @@ const CloseButton = styled(UnstyledButton)`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-gray-700);
 `;
 
 const MobileNavMenus = styled.nav`

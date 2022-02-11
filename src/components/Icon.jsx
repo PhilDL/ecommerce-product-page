@@ -1,12 +1,14 @@
+import React from "react";
+
 import styled from "styled-components/macro";
-import cartIcon from "../icons/icon-cart.svg";
-import closeIcon from "../icons/icon-close.svg";
-import deleteIcon from "../icons/icon-delete.svg";
-import menuIcon from "../icons/icon-menu.svg";
-import minusIcon from "../icons/icon-minus.svg";
-import nextIcon from "../icons/icon-next.svg";
-import plusIcon from "../icons/icon-plus.svg";
-import previousIcon from "../icons/icon-previous.svg";
+import { ReactComponent as cartIcon } from "../icons/icon-cart.svg";
+import { ReactComponent as closeIcon } from "../icons/icon-close.svg";
+import { ReactComponent as deleteIcon } from "../icons/icon-delete.svg";
+import { ReactComponent as menuIcon } from "../icons/icon-menu.svg";
+import { ReactComponent as minusIcon } from "../icons/icon-minus.svg";
+import { ReactComponent as nextIcon } from "../icons/icon-next.svg";
+import { ReactComponent as plusIcon } from "../icons/icon-plus.svg";
+import { ReactComponent as previousIcon } from "../icons/icon-previous.svg";
 
 const ICON_MAP = {
   cart: cartIcon,
@@ -19,16 +21,23 @@ const ICON_MAP = {
   previous: previousIcon,
 };
 
-const Icon = ({ height = "auto", width = "24px", name, alt }) => {
-  let iconSrc = ICON_MAP[name];
-  if (!iconSrc) {
+const Icon = ({ height = null, width = null, stroke = null, name, alt }) => {
+  const IconComponent = ICON_MAP[name];
+  if (!IconComponent) {
     return null;
   }
-  return <ImgIcon src={iconSrc} alt={alt} width={width} height={height} />;
+  let svgProps = {};
+  if (height) {
+    svgProps.height = height;
+  }
+  if (width) {
+    svgProps.width = width;
+  }
+  if (stroke) {
+    svgProps.stroke = stroke;
+  }
+  return <IconComponent {...svgProps} />;
 };
 
-const ImgIcon = styled.img`
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-`;
+const IconWrapper = styled.i``;
 export default Icon;

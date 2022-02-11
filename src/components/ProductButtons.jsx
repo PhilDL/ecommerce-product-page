@@ -1,7 +1,8 @@
 import styled from "styled-components/macro";
 import { useState } from "react";
-import Icon from "./Icon";
+import { IconMinus, IconPlus } from "./Icons";
 import UnstyledButton from "./UnstyledButton";
+import PrimaryButton from "./PrimaryButton";
 import { QUERIES } from "../constants";
 
 const ProductButtons = ({ productId, onAddToCart }) => {
@@ -11,28 +12,28 @@ const ProductButtons = ({ productId, onAddToCart }) => {
   };
 
   return (
-    <Section>
+    <ProductButtonsSection>
       <QuantityFieldSet>
-        <ChangeQtyButton onClick={(e) => setQuantity((state) => state - 1)}>
-          <Icon name="minus" width={12} alt="Decrease quantity" />
+        <ChangeQtyButton onClick={(e) => setQuantity((state) => +state - 1)}>
+          <IconMinus width={12} />
         </ChangeQtyButton>
         <QuantityInput
           type="number"
           value={quantity}
           onChange={(e) => setQuantity(e.target.value)}
         />
-        <ChangeQtyButton onClick={(e) => setQuantity((state) => state + 1)}>
-          <Icon name="plus" width={12} alt="Increase quantity" />
+        <ChangeQtyButton onClick={(e) => setQuantity((state) => +state + 1)}>
+          <IconPlus width={12} />
         </ChangeQtyButton>
       </QuantityFieldSet>
       <AddToCartButton onClick={onAddToCartHandler}>
         Add to cart
       </AddToCartButton>
-    </Section>
+    </ProductButtonsSection>
   );
 };
 
-const Section = styled.section`
+const ProductButtonsSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -58,6 +59,10 @@ const ChangeQtyButton = styled(UnstyledButton)`
   flex-basis: 44px;
   height: 60px;
   text-align: center;
+  color: var(--color-primary);
+  &:hover {
+    color: var(--color-black);
+  }
 `;
 
 const QuantityInput = styled.input`
@@ -69,15 +74,8 @@ const QuantityInput = styled.input`
   height: 60px;
 `;
 
-const AddToCartButton = styled(UnstyledButton)`
-  padding-top: 18px;
-  padding-bottom: 18px;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  text-align: center;
+const AddToCartButton = styled(PrimaryButton)`
   box-shadow: 0px 20px 50px -20px var(--color-primary);
-  border-radius: 10px;
-  font-weight: 700;
   @media ${QUERIES.tabletAndUp} {
     flex: 1;
   }

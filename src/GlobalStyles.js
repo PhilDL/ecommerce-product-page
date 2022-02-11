@@ -86,6 +86,7 @@ html, body, #root {
   --color-gray-700: ${COLORS.gray["700"]};
   --color-gray-900: ${COLORS.gray["900"]};
   --color-primary: ${COLORS.orange};
+  --color-primary-hover: ${COLORS.orangeLight};
   --color-primary-light: ${COLORS.orangePale};
 }
 `;

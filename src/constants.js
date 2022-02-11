@@ -1,5 +1,6 @@
 export const COLORS = {
   orange: "hsl(26, 100%, 55%)",
+  orangeLight: "hsla(26, 100%, 71%, 1)",
   orangePale: "hsl(25, 100%, 94%)",
   white: "hsl(0, 0%, 100%)",
   gray: {

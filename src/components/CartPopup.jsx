@@ -6,7 +6,8 @@ import CartContext from "../store/cart-context";
 import UnstyledButton from "./UnstyledButton";
 import VisuallyHidden from "./VisuallyHidden";
 import { QUERIES } from "../constants";
-import Icon from "./Icon";
+import { IconDelete } from "./Icons";
+import PrimaryButton from "./PrimaryButton";
 
 const CartPopup = ({ isOpen, onDismiss }) => {
   const cartContext = useContext(CartContext);
@@ -20,7 +21,6 @@ const CartPopup = ({ isOpen, onDismiss }) => {
   };
 
   const onDeleteItemHandler = (item) => {
-    console.log("Delete item button clicked:", item);
     cartContext.dispatchCart({
       type: "ADD_ITEM",
       payload: { ...item, quantity: 0 },
@@ -52,7 +52,7 @@ const CartPopup = ({ isOpen, onDismiss }) => {
                 </CartItemPrice>
               </CartItemDetails>
               <DeleteButton onClick={onDeleteItemHandler.bind(this, item)}>
-                <Icon name="delete" width={16} alt="Delete Item" />
+                <IconDelete width={16} />
                 <VisuallyHidden>Delete Item</VisuallyHidden>
               </DeleteButton>
             </CartItem>
@@ -121,14 +121,7 @@ const Cart = styled.div`
   padding: 24px;
 `;
 
-const CheckoutButton = styled(UnstyledButton)`
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 22px 16px;
-  border-radius: 10px;
-  text-align: center;
+const CheckoutButton = styled(PrimaryButton)`
   width: 100%;
 `;
 
@@ -166,6 +159,10 @@ const DeleteButton = styled(UnstyledButton)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  color: var(--color-gray-500);
+  &:hover {
+    color: var(--color-gray-700);
+  }
 `;
 
 const CartItemDetails = styled.div`

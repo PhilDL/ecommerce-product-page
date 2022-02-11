@@ -8,7 +8,6 @@ const CartContext = createContext({
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD_ITEM" && action.payload.quantity > 0) {
-    console.log(action.payload);
     const newCart = structuredClone(state);
     const item = newCart.items.find((item) => item.id === action.payload.id);
     if (item) {

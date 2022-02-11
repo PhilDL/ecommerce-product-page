@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import UnstyledButton from "./UnstyledButton";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
-import Icon from "./Icon";
+import { IconPrevious, IconNext } from "./Icons";
 import { QUERIES } from "../constants";
 
 const CarouselImageZoomIn = ({
@@ -27,10 +27,10 @@ const CarouselImageZoomIn = ({
             alt={productName}
           />
           <PrevButton onClick={onPrevImage}>
-            <Icon name="previous" alt="Previous Img" width={12} />
+            <IconPrevious width={12} />
           </PrevButton>
           <NextButton onClick={onNextImage}>
-            <Icon name="next" alt="Next Img" width={12} />
+            <IconNext width={12} />
           </NextButton>
         </CarouselMainImage>
 
@@ -105,6 +105,10 @@ const CarouselImageThumbnail = styled.img`
   border: ${({ selected }) =>
     selected ? "2px solid var(--color-primary)" : "none"};
   opacity: ${({ selected }) => (selected ? "0.4" : "1")};
+  &:hover {
+    cursor: pointer;
+    opacity: 0.4;
+  }
 `;
 
 const ActionButton = styled(UnstyledButton)`
@@ -116,6 +120,9 @@ const ActionButton = styled(UnstyledButton)`
   height: 40px;
   display: flex;
   align-items: center;
+  &:hover {
+    color: var(--color-primary);
+  }
 `;
 
 const PrevButton = styled(ActionButton)`
