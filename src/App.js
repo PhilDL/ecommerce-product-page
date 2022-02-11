@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components/macro";
+import Header from "./components/Header";
+import Product from "./components/Product";
+import { PRODUCT } from "./data";
+import { QUERIES } from "./constants";
+import { CartContextProvider } from "./store/cart-context";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartContextProvider>
+      <Header />
+      <Main>
+        <Product product={PRODUCT} />
+      </Main>
+    </CartContextProvider>
   );
 }
+
+const Main = styled.main`
+  padding-left: 24px;
+  padding-right: 24px;
+  height: 100%;
+  @media ${QUERIES.tabletAndUp} {
+    margin: auto;
+    max-width: 1110px;
+    padding: 48px;
+  }
+`;
 
 export default App;
