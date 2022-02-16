@@ -26,7 +26,7 @@ const Header = () => {
           <LogoWrapper href="/">
             <Logo src={logo} alt="logo" />
           </LogoWrapper>
-          <Navigation role="navigation" aria-label="Categories Links">
+          <Navigation aria-label="Categories Links">
             <NavLink href="/sale">Collection</NavLink>
             <NavLink href="/men">Men</NavLink>
             <NavLink href="/women">Women</NavLink>
@@ -35,7 +35,7 @@ const Header = () => {
           </Navigation>
         </Side>
 
-        <NavWrapper role="navigation" aria-label="Cart and Profile links">
+        <NavWrapper aria-label="Cart and Profile links">
           <CartButton onClick={() => setshowCartPopup(true)}>
             <VisuallyHidden>Open Cart</VisuallyHidden>
             <IconCart />

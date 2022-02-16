@@ -42,7 +42,7 @@ const ProductButtons = ({ productId, onAddToCart }) => {
   );
 };
 
-const ProductButtonsSection = styled.section`
+const ProductButtonsSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
