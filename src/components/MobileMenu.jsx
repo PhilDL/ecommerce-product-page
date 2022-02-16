@@ -20,7 +20,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
             <VisuallyHidden>Close Modal</VisuallyHidden>
           </CloseButton>
         </ModalHeader>
-        <MobileNavMenus>
+        <MobileNavMenus role="navigation" aria-label="Navigation Links">
           <MobileNavLink href="/sale">Collection</MobileNavLink>
           <MobileNavLink href="/men">Men</MobileNavLink>
           <MobileNavLink href="/women">Women</MobileNavLink>

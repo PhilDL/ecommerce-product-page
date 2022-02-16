@@ -63,13 +63,13 @@ const ProductContent = styled.div`
 `;
 const ProductTextWrapper = styled.div``;
 
-const ProductBrand = styled.h3`
+const ProductBrand = styled.h2`
   font-size: ${12 / 16}rem;
   color: var(--color-primary);
   text-transform: uppercase;
 `;
 
-const ProductName = styled.h3`
+const ProductName = styled.h1`
   font-size: ${28 / 16}rem;
   color: var(--color-gray-900);
   margin: 16px 0;
